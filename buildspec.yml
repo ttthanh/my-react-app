@@ -1,5 +1,9 @@
 version: 0.2
 
+env:
+  variables:
+    S3_BUCKET_NAME: "test-code-build-thanhtt1"
+
 phases:
   install:
     runtime-versions:
@@ -7,6 +11,10 @@ phases:
     commands:
       - echo Installing Node.js and npm
       - npm install -g npm@latest  # Update npm to latest version
+      - echo "Installing AWS CLI"
+      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      - unzip awscliv2.zip
+      - ./aws/install
 
   pre_build:
     commands:
@@ -20,11 +28,10 @@ phases:
 
   post_build:
     commands:
-      - echo Build completed on `date`
-      - echo Compressing build files...
-      - tar -czvf build.tar.gz -C build/ .
+      - echo "Deploying to S3..."
+      - aws s3 sync build/ s3://${S3_BUCKET_NAME} --delete
 
 artifacts:
   files:
-    - 'build.tar.gz'
-  discard-paths: yes
+    - '**/*'
+  base-directory: 'build'
