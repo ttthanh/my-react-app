@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 16  # or 18, whichever your app supports
+      nodejs: 22  # or 18, whichever your app supports
     commands:
       - echo Installing Node.js and npm
       - npm install -g npm@latest  # Update npm to latest version
