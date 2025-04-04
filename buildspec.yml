@@ -11,10 +11,10 @@ phases:
     commands:
       - echo Installing Node.js and npm
       - npm install -g npm@latest  # Update npm to latest version
-      - echo "Installing AWS CLI"
-      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      - unzip awscliv2.zip
-      - ./aws/install
+      # - echo "Installing AWS CLI"
+      # - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      # - unzip awscliv2.zip
+      # - ./aws/install
 
   pre_build:
     commands:
