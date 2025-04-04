@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16  # or 18, whichever your app supports
+    commands:
+      - echo Installing Node.js and npm
+      - npm install -g npm@latest  # Update npm to latest version
+
+  pre_build:
+    commands:
+      - echo Installing dependencies...
+      - npm install
+
+  build:
+    commands:
+      - echo Building the React app...
+      - npm run build
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Compressing build files...
+      - tar -czvf build.tar.gz -C build/ .
+
+artifacts:
+  files:
+    - 'build.tar.gz'
+  discard-paths: yes
