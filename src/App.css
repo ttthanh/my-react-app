@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+
+.messages-container {
+  width: 300px;
+  height:300px;
+  overflow-y: scroll;
+  background-color: gray;
+}
