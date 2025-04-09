@@ -28,7 +28,9 @@ export default function ChatBox() {
             const body = JSON.parse(result.body);
           
             setMessagesData(prev => {
-                return [...prev, { text: body["Answer"], sender: 'sever' }];
+                return [...prev, 
+                    { text: body["Answer"], sender: 'bot' },
+                    { text: body["url"], sender: 'bot' }];
             });
 
         } catch (err) {
@@ -69,7 +71,9 @@ export default function ChatBox() {
     // if (loading) return <div>Loading...</div>;
     // if (error) return <div>Error: {error}</div>;
 
-    const handleSendMessage = () => {
+    const handleSendMessage = (e) => {
+        e.preventDefault();
+        
         if (message.trim()) {
           setMessagesData([...messagesData, { text: message, sender: 'user' }]);
           setMessage('');
@@ -89,10 +93,11 @@ export default function ChatBox() {
     return (
         <div className="greeting">
             <Box messages={messagesData}/>
-            <input disabled={loading} type="text" value={message} onChange={(e) => setMessage(e.target.value)} 
-                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}/>
-            <button disabled={loading} onClick={handleSendMessage}>OK</button>
-            
+            <div className="text-chat-box">
+                <input disabled={loading} type="text" value={message} onChange={(e) => setMessage(e.target.value)} 
+                        onKeyPress={(e) => e.key === 'Enter' && handleSendMessage(e)}/>
+                <button disabled={loading} onClick={handleSendMessage}>Send</button>
+            </div>
         </div>
     );
 }
