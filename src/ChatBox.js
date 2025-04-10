@@ -8,6 +8,7 @@ export default function ChatBox() {
 
     const [message, setMessage] = useState("");
     const [messagesData, setMessagesData] = useState([]);
+
     const callAiBedRock = async (dataInput) => {
         try {
             const dataRequest = {
@@ -24,6 +25,7 @@ export default function ChatBox() {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
+
             const result = await response.json();
             const body = JSON.parse(result.body);
           
@@ -91,13 +93,42 @@ export default function ChatBox() {
     
 
     return (
-        <div className="greeting">
-            <Box messages={messagesData}/>
-            <div className="text-chat-box">
-                <input disabled={loading} type="text" value={message} onChange={(e) => setMessage(e.target.value)} 
-                        onKeyPress={(e) => e.key === 'Enter' && handleSendMessage(e)}/>
-                <button disabled={loading} onClick={handleSendMessage}>Send</button>
-            </div>
+      <div className="greeting">
+        <div className="chat-container">
+          <div className="chat-header">
+            <div className="chat-title">AI ChatBot Assistant</div>
+          </div>
+
+          <Box messages={messagesData} />
+
+          <div className="text-chat-box">
+            <input
+              className="message-input"
+              disabled={loading}
+              type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Enter a question or response here..."
+              onKeyPress={(e) => e.key === "Enter" && handleSendMessage(e)}
+            />
+
+            <button disabled={loading} onClick={handleSendMessage}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+              >
+                <path
+                  d="M3.06452 8.99999L1.28108 15.6879C1.17086 16.1012 1.59689 16.4531 1.98198 16.2668L16.0698 9.45007C16.4461 9.26799 16.4461 8.73199 16.0698 8.54991L1.98198 1.73321C1.5969 1.54688 1.17086 1.89877 1.28108 2.31212L3.06452 8.99999ZM3.06452 8.99999H10.8065"
+                  stroke="white"
+                  stroke-width="2"
+                ></path>
+              </svg>
+            </button>
+          </div>
         </div>
+      </div>
     );
 }

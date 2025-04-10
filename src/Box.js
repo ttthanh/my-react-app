@@ -12,15 +12,17 @@ export default function Box({ messages }) {
     };
 
     return (
-        <div className="chat-container">
+        
             <div className="messages-container">
                 {messages.map((message, index) => (
+                    // filter blank messages respone from chat-bot
+                    message && message.text ? 
                     <div key={index} className={`message ${message.sender}`}>
-                        {message.text}
-                    </div>
+                        {message.text} {message.index}
+                    </div> : null
                 ))}
                 <div ref={messagesEndRef} />
             </div>
-        </div>
+        
     );
 }

@@ -34,8 +34,6 @@
 }
 
 
-
-
 .greeting {
   width:500px;
   margin: 50px;
@@ -43,8 +41,8 @@
 
 .App {
   background-color: gray;
-  padding:10px 50px;
-  height: 100%;
+  /* padding:10px 50px; */
+  /* height: 100%; */
 }
 
 .chat-container {
@@ -52,14 +50,46 @@
   flex-direction: column;
   height: 500px;
   border: 1px solid #ccc;
+
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 450px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.chat-header {
+  background-color:#4a90e2;
+  color: white;
+  padding: 20px;
+  text-shadow: 0 0 2px #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.chat-title {
+  font-weight: 800;
+  font-size: 27px;
 }
 
 .messages-container {
   height:300px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   background-color: white;
   flex: 1;
   padding: 10px;
+
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .message {
@@ -67,6 +97,10 @@
   padding: 8px 12px;
   border-radius: 18px;
   max-width: 70%;
+
+  max-width: 80%;
+  margin-bottom: 5px;
+  word-break: break-word;
 }
 
 .message.user {
@@ -81,10 +115,18 @@
   color: black;
 }
 
+.text-chat-box {
+  display: flex;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #eaeaea;
+}
+
+
 
 /* Basic reset for consistent styling */
 input, button {
-  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  font-family: Roboto, 'Segoe UI', 'Helvetica Neue', sans-serif;
   font-size: 16px;
   outline: none;
   box-sizing: border-box;
@@ -109,7 +151,7 @@ input[type="text"]:focus {
 
 /* Button Styling */
 button {
-  padding: 7px 10px;
+  padding: 12px 15px;
   background-color: #4a90e2;
   color: white;
   border: none;
