@@ -13,7 +13,7 @@ export default function ChatBox() {
             const dataRequest = {
                 question: dataInput
             }
-            const response = await fetch('https://38wy08u9o4.execute-api.us-east-1.amazonaws.com/main/question-agent-knowledge', {
+            const response = await fetch('https://38wy08u9o4.execute-api.us-east-1.amazonaws.com/main/question-agent', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
