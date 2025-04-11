@@ -67,29 +67,36 @@ const formatTextWithLinks = (text) => {
     });
   };
 
-export default function Box({ messages }) {
-
+export default function Box({ messages, loading }) {
     const messagesEndRef = useRef(null);
+
     useEffect(() => {
         scrollToBottom();
-    }, [messages]); // Runs whenever messages change
+    }, [messages, loading]); // also scroll when loading changes
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
     return (
-        
-            <div className="messages-container">
-                {messages.map((message, index) => (
-                    // filter blank messages respone from chat-bot
-                    message && message.text ? 
+        <div className="messages-container">
+            {messages.map((message, index) =>
+                message && message.text ? (
                     <div key={index} className={`message ${message.sender}`}>
                         {formatTextWithLinks(message.text)}
-                    </div> : null
-                ))}
-                <div ref={messagesEndRef} />
-            </div>
-        
+                    </div>
+                ) : null
+            )}
+
+            {loading && (
+                <div className="message bot">
+                    <span className="typing-dots">
+                        <span>.</span><span>.</span><span>.</span>
+                    </span>
+                </div>
+            )}
+
+            <div ref={messagesEndRef} />
+        </div>
     );
 }

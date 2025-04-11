@@ -203,9 +203,40 @@ input[type="text"], button {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* For a more cohesive look when elements are side by side */
+
 .input-group {
   display: flex;
   align-items: center;
   max-width: 500px;
+}
+
+.typing-dots {
+  font-size: 24px;
+  display: inline-flex;
+  gap: 4px;
+}
+
+.typing-dots span {
+  animation: bounce 1.4s infinite;
+  display: inline-block;
+  transform: translateY(0);
+}
+
+.typing-dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-6px);
+  }
 }

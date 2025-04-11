@@ -109,7 +109,7 @@ export default function ChatBox() {
             <div className='header-line-3'> You name it, We Have it </div>
           </div>
 
-          <Box messages={messagesData} />
+          <Box messages={messagesData} loading={loading} />
 
           <div className="text-chat-box">
             <input
