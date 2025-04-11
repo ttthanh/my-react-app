@@ -240,3 +240,19 @@ input[type="text"], button {
       transform: translateY(-6px);
   }
 }
+
+
+.reset-btn {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  
+  transition: background-color 0.3s;
+}
+
+.reset-btn:hover {
+  background-color: #d32f2f;
+}
