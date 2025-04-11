@@ -64,20 +64,45 @@
 }
 
 .chat-header {
-  background-color:#4a90e2;
-  color: white;
+  background-color:#ffffff;
   padding: 20px;
-  text-shadow: 0 0 2px #000000;
+  text-shadow: 0 0 2px #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  border: 0px solid rgb(229, 231, 235);
+  border-bottom-width: 1px;
 }
 
 .chat-title {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 27px;
+  color:#000000
 }
+
+.chat-header-info {
+  display: block;
+  padding: 20px 8px;
+  text-align: center;
+}
+
+.header-line-1 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.header-line-2 {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 36px;
+}
+
+.header-line-3 {
+  font-size: 15px;
+  line-height: 18px;
+}
+
 
 .messages-container {
   height:300px;
@@ -85,7 +110,6 @@
   background-color: white;
   flex: 1;
   padding: 10px;
-
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -96,16 +120,18 @@
   margin: 5px 0;
   padding: 8px 12px;
   border-radius: 18px;
-  max-width: 70%;
-
   max-width: 80%;
   margin-bottom: 5px;
   word-break: break-word;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 16px;
+  tab-size: 4;
+  line-height: 24px;
 }
 
 .message.user {
   align-self: flex-end;
-  background-color: #0084ff;
+  background-color: #e67e22;
   color: white;
 }
 
@@ -113,6 +139,8 @@
   align-self: flex-start;
   background-color: #e5e5ea;
   color: black;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 16px;
 }
 
 .text-chat-box {
@@ -121,8 +149,6 @@
   background-color: #f9f9f9;
   border-top: 1px solid #eaeaea;
 }
-
-
 
 /* Basic reset for consistent styling */
 input, button {
@@ -152,7 +178,7 @@ input[type="text"]:focus {
 /* Button Styling */
 button {
   padding: 12px 15px;
-  background-color: #4a90e2;
+  background-color: #e67e22;
   color: white;
   border: none;
   border-radius: 6px;
@@ -163,12 +189,12 @@ button {
 }
 
 button:hover {
-  background-color: #3a7bc8;
+  background-color: #4a90e2;
   transform: translateY(-1px);
 }
 
 button:active {
-  background-color: #2c6bb7;
+  background-color: #4a90e2;
   transform: translateY(0);
 }
 

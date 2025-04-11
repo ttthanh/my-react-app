@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Box from './Box'
+import { Bedrock } from '@lobehub/icons';
 
 export default function ChatBox() {
     const [loading, setLoading] = useState(false);
@@ -95,8 +96,17 @@ export default function ChatBox() {
     return (
       <div className="greeting">
         <div className="chat-container">
+
           <div className="chat-header">
-            <div className="chat-title">AI ChatBot Assistant</div>
+            <div className="chat-title">ChatBot Assistant</div>
+          </div>
+
+          <div className='chat-header-info'>
+            <Bedrock size={180} />;
+            
+            <div className='header-line-1'> Welcome To </div>
+            <div className='header-line-2'> Ask BedRock AI </div>
+            <div className='header-line-3'> You name it, We Have it </div>
           </div>
 
           <Box messages={messagesData} />
