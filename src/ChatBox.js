@@ -26,12 +26,12 @@ export default function ChatBox() {
       const fullPrompt = `${conversationContext}\nUser: ${dataInput}`;
   
       const dataRequest = {
-        sessionId,
+        session_id: sessionId,
         question: fullPrompt,
       };
   
       const response = await fetch(
-        "https://38wy08u9o4.execute-api.us-east-1.amazonaws.com/main/question-agent",
+        "https://38wy08u9o4.execute-api.us-east-1.amazonaws.com/main/question-agent-knowledge",
         {
           method: "POST",
           headers: {

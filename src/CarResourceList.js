@@ -72,7 +72,7 @@ export default function CarResourceList() {
                 <ul className="link-list">
                   {categoryData.list_article.map((link, linkIndex) => (
                     <li key={linkIndex} className="link-item">
-                      <a href="#">{link}</a>
+                      <a href={link}>{link}</a>
                     </li>
                   ))}
                 </ul>
