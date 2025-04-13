@@ -13,7 +13,7 @@ export default function ChatBox() {
 
   // Generate sessionId on mount
   useEffect(() => {
-    setSessionId(crypto.randomUUID());
+    setSessionId(Date.now().toString());
   }, []);
 
   const callAiBedRock = async (dataInput) => {
