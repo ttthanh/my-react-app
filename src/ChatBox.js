@@ -112,7 +112,7 @@ export default function ChatBox() {
   const handleReset = () => {
         setMessagesData([]);
         setLoading(false);
-        setSessionId(crypto.randomUUID()); // Start a fresh session
+        setSessionId(Date.now().toString()); // Start a fresh session
       };
       
   return (
