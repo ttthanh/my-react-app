@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Box from './Box'
 import { Bedrock } from '@lobehub/icons';
 
@@ -114,6 +114,14 @@ export default function ChatBox() {
         setLoading(false);
         setSessionId(Date.now().toString()); // Start a fresh session
       };
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (!loading && inputRef.current) {
+        inputRef.current.focus();
+    }
+}, [loading]);
       
   return (
     <div className="greeting">
@@ -133,6 +141,7 @@ export default function ChatBox() {
 
         <div className="text-chat-box">
           <input
+            ref={inputRef} 
             className="message-input"
             disabled={loading}
             type="text"
