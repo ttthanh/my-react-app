@@ -126,36 +126,61 @@ const formatTextWithLinks = (text) => {
   });
 };
 
+
 export default function Box({ messages, loading }) {
-    const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef(null);
 
-    useEffect(() => {
-        scrollToBottom();
-    }, [messages, loading]); // also scroll when loading changes
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, loading]); // also scroll when loading changes
 
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
-    return (
-        <div className="messages-container">
-            {messages.map((message, index) =>
-                message && message.text ? (
-                    <div key={index} className={`message ${message.sender}`}>
-                        {formatTextWithLinks(message.text)}
-                    </div>
-                ) : null
-            )}
 
-            {loading && (
-                <div className="message bot">
-                    <span className="typing-dots">
-                        <span>.</span><span>.</span><span>.</span>
-                    </span>
-                </div>
-            )}
+   // Render message content, handling text and nested object like body.data
+   const renderMessageContent = (message) => {
+    if (typeof message.text === 'string') {
+      return message.text.split('\n').map((line, index) => (
+        <div key={index}>{line}</div>
+      ));
+    }
 
-            <div ref={messagesEndRef} />
+    if (message.text && message.text.data) {
+      return message.text.data.split('\n').map((line, index) => (
+        <div key={index}>{line}</div>
+      ));
+    }
+
+    return null;
+  };
+
+
+  return (
+    <div className="messages-container">
+
+      {/* Render messages */}
+      {messages.map((msg, index) => {
+        const messageContent = renderMessageContent(msg);
+        return messageContent ? (
+          <div key={index} className={`message ${msg.sender}`}>
+            {messageContent}
+          </div>
+        ) : null;
+      })}
+
+      {loading && (
+        <div className="message bot">
+          <span className="typing-dots">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+          </span>
         </div>
-    );
+      )}
+
+      <div ref={messagesEndRef} />
+    </div>
+  );
 }

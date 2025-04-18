@@ -5,12 +5,17 @@ import './index.css';
 import CarResourceList from './CarResourceList';
 
 function App() {
+  
   return (
     <div className="App">
 
-        <CarResourceList />
+        {/* <CarResourceList /> */}
+
+        {/* <CarDataExtraction /> */}
         
         <ChatBox />
+
+        
      
     </div>
   );
